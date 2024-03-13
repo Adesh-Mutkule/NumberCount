@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style type="text/css">
+        .card {
+  width: 300px;
+  height: 200px;
+  padding: 30px;
+  text-align: center;
+  background: blue;
+  color: white;
+  float: left   ;
+  margin: 2px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.number {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="card">
+  <h2 class="number" data-number="500">0</h2>
+  <p>Users</p>
+</div>
+
+<div class="card">
+  <h2 class="number" data-number="1000">0</h2>
+  <p>Visitors</p>
+</div>
+
+<div class="card" style="background-color: red;">
+  <h2 class="number" data-number="250">0</h2>
+  <p>Clients</p>
+</div>
+
+<div class="card">
+  <h2 class="number" data-number="750">0</h2>
+  <p>Customers</p>
+</div>
+<script type="text/javascript">
+    // Function to animate the numbers
+function animateValue(element, start, end, duration) {
+  let range = end - start;
+  let current = start;
+  let increment = end > start ? 1 : -1;
+  let stepTime = Math.abs(Math.floor(duration / range));
+  let timer = setInterval(function () {
+    current += increment;
+    element.textContent = current;
+    if (current == end) {
+      clearInterval(timer);
+    }
+  }, stepTime);
+}
+
+// Fetching all number elements
+let numbers = document.querySelectorAll('.number');
+
+// Loop through each number element
+numbers.forEach(function (number) {
+  let startNumber = 0;
+  let endNumber = parseInt(number.getAttribute('data-number'));
+  let duration = 2000; // Change duration as needed
+
+  animateValue(number, startNumber, endNumber, duration);
+});
+
+</script>
+
+
+</body>
+</html>
